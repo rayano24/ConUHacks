@@ -1,8 +1,7 @@
-import java.util.Scanner;
-
 /* Rayan Osseiran
  * ConUHacks 2018
  */
+import java.util.Scanner;
 
 public class AtmMachine extends HolderAccount {
 
