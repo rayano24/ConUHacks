@@ -1,4 +1,6 @@
 // Rayan Osseiran
+// Works as the pseudo-registration system. Alternatively, store hash tables in text file as specific user keys.
+
  
 import java.util.Hashtable;
 
@@ -9,6 +11,4 @@ public class HolderAccount {
 	public static void AccountGenerator(String emailAddress, int pinStore) {				
 		hm.put(emailAddress,pinStore);  	
 	}
-
-
 }
