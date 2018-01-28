@@ -1,4 +1,3 @@
-
 /* Rayan Osseiran
  * ConUHacks 2018
  */
@@ -88,7 +87,7 @@ public class AtmMachine extends ReqCheck {
 
 			// 1. Withdrawal - Option available pre-ATM
 
-			if (choice.equalsIgnoreCase("Withdraw")) {
+			if (choice.equalsIgnoreCase("Withdraw") || choice.equals("1")) {
 				System.out.print("Enter an amount to withdraw: ");
 				float withdrawalAmt;
 
@@ -113,7 +112,7 @@ public class AtmMachine extends ReqCheck {
 
 			// 2. Deposits
 
-			else if (choice.equalsIgnoreCase("Deposit")) {
+			else if (choice.equalsIgnoreCase("Deposit") || choice.equals("2")) {
 				Float depositAmt;
 				System.out.print("Enter an amount to deposit: ");
 
@@ -132,11 +131,10 @@ public class AtmMachine extends ReqCheck {
 
 			// 3. Balance
 
-			else if (choice.equalsIgnoreCase("Balance")) {
+			else if (choice.equalsIgnoreCase("Balance") || choice.equals("3")) {
 				System.out.println("As of " + timeStamp + ", your account balance (ID: " + emailAddress + ") is: $"
 						+ balance + ".");
 				System.out.println("Thank you for banking with us.");
-
 			}
 
 			else {
