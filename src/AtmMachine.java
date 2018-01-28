@@ -1,6 +1,8 @@
 /* Rayan Osseiran
  * ConUHacks 2018
  */
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Scanner;
 
 public class AtmMachine extends HolderAccount {
@@ -9,11 +11,15 @@ public class AtmMachine extends HolderAccount {
 
 	public static void main(String args[]) {
 		
+		// Implementing date and time for post action receipt
+		String timeStamp = new SimpleDateFormat("dd/MM/yyyy - H:mm").format(Calendar.getInstance().getTime());
+		
 		// Setting a pin, simulates an unrealistic registration process
 
 		System.out.print("Welcome to the Generic Bank of Canada, "
 				+ "would you like to sign up for online banking? ");
 
+		@SuppressWarnings("resource")
 		Scanner scannerinput = new Scanner(System.in);
 		String bankingQuery = scannerinput.next();
 
@@ -22,7 +28,7 @@ public class AtmMachine extends HolderAccount {
 			System.exit(0);
 		}
 
-		System.out.println("Welcome, please enter the email associated with your account and a desired 4-digit pin: ");
+		System.out.println("Welcome, please enter the email associated with your account and a desired 4-digit pin. ");
 		
 		System.out.print("Email Address: ");
 		String emailAddress = scannerinput.next();
@@ -52,7 +58,6 @@ public class AtmMachine extends HolderAccount {
 			if (pinNumber != Integer.parseInt(pin)) {
 				System.out.println("You have entered an invalid pin");
 				continue;
-				
 			} 
 			else {
 				System.out.println("Please select an option:");
@@ -68,6 +73,7 @@ public class AtmMachine extends HolderAccount {
 			if (choice.equalsIgnoreCase("Withdraw")) {
 				System.out.print("Enter an amount to withdraw: ");
 				float withdrawalAmt;
+				
 				try {
 					withdrawalAmt = scannerinput.nextFloat();
 				} catch (Exception e) {
@@ -77,40 +83,45 @@ public class AtmMachine extends HolderAccount {
 
 				if (withdrawalAmt <= balance) {
 					balance -= withdrawalAmt;
-					System.out.print("Your balance is now: $");
-					System.out.println(balance);
-					System.out.println();
+					System.out.println(timeStamp);
+					System.out.print("Your balance is now: $" + balance + ". ");
+					System.out.println("Thank you for banking with us");
 
 				} else {
-					System.out.println("You do not have sufficient funds. You will be kicked out of the session");
+					System.out.println("You do not have sufficient funds. You will be kicked out of the session.");
 					continue; 
 				}
 			}
 			
 			// 2. Deposits
+			
 			else if (choice.equalsIgnoreCase("Deposit")) {
 				Float depositAmt;
 				System.out.print("Enter an amount to deposit: ");
+				
 				try {
-					depositAmt = scannerinput.nextFloat(); // include try catch
+					depositAmt = scannerinput.nextFloat(); 
 				} catch (Exception e) {
 					System.out.println("Improper input. You will be kicked out of the session.");
 					continue;
 				}
-
+				
 				balance += depositAmt;
-				System.out.print("Your balance is now: $");
-				System.out.println(balance);
+				System.out.println(timeStamp);
+				System.out.println("Your balance is now: $" + balance + ". ");
 				System.out.println("Thank you for banking with us.");
 			} 
 	
 			// 3. Balance
-			else if (choice.equalsIgnoreCase("Balance")) {
-				System.out.print("Account balance: $");
-				System.out.println(balance);
+			
+			else if (choice.equalsIgnoreCase("Balance")) {			
+			
+				System.out.println("As of " + timeStamp + ", your account balance (ID: " + emailAddress + ") is: $" + balance + ".");
 				System.out.println("Thank you for banking with us.");
+				
 			}
 			else {
+				System.out.println("Invalid input. You will be kicked out of the session.");
 				continue;
 			}
 		}
