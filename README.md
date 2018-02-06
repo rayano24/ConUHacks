@@ -1,2 +1,2 @@
 Basic ATM program to brush up on Java. Pseudo registration system (no data locally stored/file io) to select a pin. 
-This was done in about 5 hours so the main is messy/overly long. The code is generally messy.
+Completed in about 5 hours so it is generally messy, lacks proper methods, repetitive etc... See my CommandLineBanking project for an extension of it.
